@@ -15,19 +15,21 @@ class _GiffBlockState extends State<GiffBlock> {
 
   final Api = ApiCall();
 
-  List<String> links = [];
+  List<Gif> links = [];
 
-  Widget builds() {
-    return GridView.count(
-        crossAxisCount: 2,
-        children: links
-            .map((link) => Column(children: [
-                  Image.network(
-                    link,
-                    fit: BoxFit.contain,
-                  )
-                ]))
-            .toList());
+  Widget giffListBuilder() {
+    return Container(
+      child: ListView.builder(
+        scrollDirection: Axis.vertical,
+        itemCount: links.length,
+        itemBuilder: (context, index) {
+          return Container(
+            height: double.parse(links[index].Height),
+            child: Image.network(links[index].links, fit: BoxFit.fill),
+          );
+        },
+      ),
+    );
   }
 
   @override
@@ -53,6 +55,6 @@ class _GiffBlockState extends State<GiffBlock> {
           elevation: 2.0,
           actions: [IconButton(onPressed: null, icon: Icon(Icons.search))],
         ),
-        body: builds());
+        body: giffListBuilder());
   }
 }
