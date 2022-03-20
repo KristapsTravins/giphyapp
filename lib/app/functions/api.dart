@@ -10,8 +10,10 @@ class Gif {
 
 class ApiCall {
   getGiffs(searchWord) async {
-    final response = await http.get(Uri.parse(
-        'http://api.giphy.com/v1/gifs/search?q=$searchWord&api_key=cRND84WPH72u6frFp7S311svhgMpM4BD'));
+    var urlEndpoint = searchWord.isEmpty
+        ? "http://api.giphy.com/v1/gifs/search?q=random&api_key=cRND84WPH72u6frFp7S311svhgMpM4BD"
+        : "http://api.giphy.com/v1/gifs/search?q=$searchWord&api_key=cRND84WPH72u6frFp7S311svhgMpM4BD";
+    final response = await http.get(Uri.parse(urlEndpoint));
     List<Gif> links = [];
     var jsonData = jsonDecode(response.body);
 

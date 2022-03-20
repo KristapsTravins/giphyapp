@@ -49,8 +49,8 @@ class _GiffBlockState extends State<GiffBlock> {
             },
             style: TextStyle(fontSize: 19.0, color: Colors.white),
             decoration: InputDecoration(
-                hintText: myController.text.isEmpty ? 'Search Giff ...' : '',
-                hintStyle: TextStyle(fontSize: 20.0, color: Colors.white)),
+                labelText: "Search Giff here ...",
+                labelStyle: TextStyle(fontSize: 20.0, color: Colors.white)),
           ),
           elevation: 2.0,
           actions: [IconButton(onPressed: null, icon: Icon(Icons.search))],
